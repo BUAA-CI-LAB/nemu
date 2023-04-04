@@ -25,9 +25,8 @@ word_t raise_intr(uint32_t ecode, vaddr_t epc) {
   CRMD->plv  = 0;
   CRMD->ie   = 0;
   ESTAT->ecode = ecode;
-  if(ecode != EX_ADE){
-    ESTAT->esubcode = 0;
-  }
+  ESTAT->esubcode = 0;
+
 
   if(cpu.inst_idle){
     ERA->val = epc + 4;

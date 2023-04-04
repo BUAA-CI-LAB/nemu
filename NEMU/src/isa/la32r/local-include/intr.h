@@ -37,7 +37,7 @@
 #define SUBEX_ADEF  0x0
 #define SUBEX_ADEM  0x1
 #define SUBEX_FPE   0x0
-#define SUBEX_NULL  0xf  // do not need esubcode
+#define SUBEX_NULL  0x0  // do not need esubcode
 
 #define PRIV_ERET 1
 #define PRIV_IDLE 2

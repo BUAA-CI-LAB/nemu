@@ -227,19 +227,6 @@ paddr_t isa_mmu_translate(vaddr_t vaddr, int len, int type) {
       return (((DMW1->pseg)<<29) | (vaddr & 0x1fffffff));
     }else{     // DMW reg not matched, use tlb
 
-      if((CRMD->plv == 0x3) && (vaddr & ((vaddr_t)0x80000000))){      
-        printf("[NEMU] PC: 0x%x [NEMU]: current mem addr = 0x%x, user visited high half\n",cpu.pc,vaddr);
-        if(type == MEM_TYPE_IFETCH){
-          ESTAT->esubcode = 0; 
-          BADV->val = cpu.pc; // CPU.PC is the same as vaddr here..
-        }
-        else {
-          ESTAT->esubcode = 1; 
-          BADV->val = vaddr;
-        }
-        longjmp_exception(EX_ADE); 
-      } 
-
       int i = 0;
 
       for(i = 0; i<2; i++){

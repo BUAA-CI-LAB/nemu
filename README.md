@@ -48,7 +48,16 @@ make
 ```
 （当然也可以使用 `make menuconfig` 进入图形化界面手动配置，但是不推荐，一方面是不好用，一方面是已经准备好了配置文件，一方面是很多配置组合并没有测试过）
 
-如果你没有看到报错，生成的动态链接库文件 `la32r-nemu-interpreter-so` 就在 `.build` 之中了。
+在编译过程中，你应该会看到两处 `WARNING`:
+
+be like
+```
+warning: ‘vaddr_write_cross_page’ defined but not used
+warning: ‘vaddr_read_cross_page’ defined but not used
+```
+这两个函数是用来处理 `riscv` 中，16bit 压缩指令可能导致的跨页读写问题。`LA32R` 中不存在这个问题，忽略之。
+
+如果你没有再看到其他报错，生成的动态链接库文件 `la32r-nemu-interpreter-so` 就在 `.build` 之中了。
 
 如果你想将NEMU编译为可执行文件，那么将配置文件换为 `la32-reduced_defconfig`，编译出的可执行文件 `la32r-nemu-interpreter` 就在`.build` 之中了。
 
