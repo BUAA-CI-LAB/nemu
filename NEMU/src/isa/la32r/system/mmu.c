@@ -198,7 +198,7 @@ void invtlb(uint32_t op, uint32_t asid, uint32_t va){
     }
     break;
   default:
-    printf("[NEMU] ERROR: Unknown op 0x%x for INVTLB\n",op);
+    printf("[NEMU]: Unknown op 0x%x for INVTLB, exception INE will occur.\n",op);
     longjmp_exception(EX_INE); 
     break;
   }
@@ -219,7 +219,7 @@ paddr_t isa_mmu_translate(vaddr_t vaddr, int len, int type) {
       match_dmw1 = 1;    
 
     if(match_dmw0 & match_dmw1){
-      printf("[NEMU] ERROR: both DMW reg matched.\n");
+      printf("[NEMU] WARNING: both DMW reg matched.\n");
       exit(1);
     }else if(match_dmw0){
       return (((DMW0->pseg)<<29) | (vaddr & 0x1fffffff));
