@@ -28,8 +28,12 @@ word_t raise_intr(uint32_t ecode, vaddr_t epc) {
   ESTAT->esubcode = 0;
 
 
-  if(cpu.inst_idle && ecode != EX_IPE ){
-    ERA->val = epc + 4;
+  if(cpu.inst_idle){
+    if(ecode != EX_IPE){
+      ERA->val = epc + 4;
+    }else{
+      ERA->val = epc;      
+    }
     cpu.inst_idle = 0;
   }else{
     ERA->val = epc;
