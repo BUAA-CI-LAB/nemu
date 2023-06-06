@@ -23,7 +23,7 @@
 // 0 ~ 2
 #define EUEN_W_MASK         0x00000001
 // 0
-#define ECFG_W_MASK         0x00000bff
+#define ECFG_W_MASK         0x00001bff
 // 0 ~ 12
 #define ESTAT_W_MASK        0x00000003
 // 0 ~ 1
