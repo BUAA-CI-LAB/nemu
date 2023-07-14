@@ -137,8 +137,11 @@ static inline void csr_write(word_t *dest, word_t src) {
   else if(is_write(CPUID) || is_write(TVAL)){
     //do nothing
   }
+  else if(is_write(PGD)) {
+    // do nothing
+  }
   else{
-      panic("[NEMU] unimplemented CSR");
+      panic("[NEMU] unimplemented CSR, CSRID=0x%lx",dest - csr_array);
   }
 }
 
