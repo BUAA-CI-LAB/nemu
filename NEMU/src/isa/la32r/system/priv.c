@@ -85,7 +85,8 @@ static inline void csr_write(word_t *dest, word_t src) {
       PRMD->val = mask_bitset(PRMD->val, PRMD_W_MASK, src);
   }
   else if(is_write(EUEN)){
-      EUEN->val = mask_bitset(EUEN->val, EUEN_W_MASK, src);
+      // TODO : Floating point instructions are not implemented, so FPE needs to be constant at zero?
+      //EUEN->val = mask_bitset(EUEN->val, EUEN_W_MASK, src);
   }
   else if(is_write(ECFG)){
       ECFG->val = mask_bitset(ECFG->val, ECFG_W_MASK, src);
