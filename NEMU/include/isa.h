@@ -72,6 +72,7 @@ void isa_difftest_raise_intr(word_t NO);
 void isa_difftest_uarchstatus_cpy(void *dut, bool direction);
 void isa_difftest_timercpy(void *dut);
 void isa_difftest_tlbcpy(uint32_t index, void *dut);
+void isa_tlbcpy_to_difftest(uint32_t index, void *dut);
 void isa_difftest_tlbfill_index_set(uint32_t index);
 void isa_difftest_guided_exec(void * guide);
 void isa_difftest_estat_sync(uint32_t index, uint32_t mask);

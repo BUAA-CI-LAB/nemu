@@ -130,6 +130,16 @@ void isa_difftest_tlbcpy(uint32_t index, void *dut){
   tlb[index].hi = tlb_temp->hi;
   tlb[index].lo[0] = tlb_temp->lo[0];
   tlb[index].lo[1] = tlb_temp->lo[1];
+  // print_tlb_entry(index);
+}
+
+void isa_tlbcpy_to_difftest(uint32_t index, void *dut) {
+  assert(index <= CONFIG_TLB_ENTRIES);
+  
+  struct tlb_struct* tlb_temp = (struct tlb_struct*) dut;
+  tlb_temp->hi = tlb[index].hi;
+  tlb_temp->lo[0] = tlb[index].lo[0];
+  tlb_temp->lo[1] = tlb[index].lo[1];
 }
 
 

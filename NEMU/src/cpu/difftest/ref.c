@@ -71,6 +71,10 @@ void difftest_tlbcpy(uint32_t index, void *dut) {
   isa_difftest_tlbcpy(index, dut);
 }
 
+void difftest_tlbcpy_to_difftest(uint32_t index, void *dut) {
+  isa_tlbcpy_to_difftest(index, dut);
+}
+
 void difftest_tlbfill_index_set(uint32_t index) {
   isa_difftest_tlbfill_index_set(index);
 }
