@@ -219,8 +219,8 @@ paddr_t isa_mmu_translate(vaddr_t vaddr, int len, int type) {
       match_dmw1 = 1;    
 
     if(match_dmw0 & match_dmw1){
-      printf("[NEMU] WARNING: both DMW reg matched.\n");
-      exit(1);
+      printf("[NEMU] WARNING: both DMW reg matched, use dmw0 trans.\n");
+      return (((DMW0->pseg)<<29) | (vaddr & 0x1fffffff));
     }else if(match_dmw0){
       return (((DMW0->pseg)<<29) | (vaddr & 0x1fffffff));
     }else if(match_dmw1){
